@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col col-lg-6">
+            <div class="card mt-4">
+                <div class="card-header text-uppercase font-weight-bold">
+                    Perguntas
+                </div>
+                <div class="card-body">
+                    <form action="/questions/makequestion/savequestion" method="POST">
+                        <label for="title">Título: </label>
+                        <input type="text" name="title" class="form-control">
+                        <label for="question">Faça sua pergunta aqui: </label>
+                        <input type="text" name="question" class="form-control">
+                        <button type="submit" class="btn btn-success mt-3">Fazer pergunta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

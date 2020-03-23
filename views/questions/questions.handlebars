@@ -1,0 +1,21 @@
+<div class="p-3 mb-2 bg-light text-dark col-12">
+    <h2>Lista de Perguntas</h2>
+</div>
+<div class="container mb-3"><a href="/questions/makequestion" class="btn btn-primary">Perguntar</a></div>
+<hr>
+<div class="container-fluid">
+    <div class="row">
+        {{#each questions}}
+        <div class="col col-lg-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{title}}</h3>
+                    <p class="card-text">{{description}}</p>
+                    <hr>
+                    <a href="" class="btn btn-success">Responder</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
