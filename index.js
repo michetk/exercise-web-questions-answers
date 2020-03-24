@@ -5,7 +5,8 @@ const path = require('path')
 const questions = require('./routers/question')
 const bodyParser = require('body-parser')
 const connection = require('./models/database')
-const question = require('./models/Question')
+const Question = require('./models/Question')
+const Answer = require('./models/Answer')
 
 
 // database

@@ -1,13 +1,51 @@
 <div class="container-fluid">
     <div class="row mt-4">
         <div class="col  col-lg-12">
-            <div class="card">
+            <div class="card border-top-custom">
                 <div class="card-header">
                     <h5>{{question.title}}</h5>
                 </div>
                 <div class="card-body">
                     <p>{{question.description}}</p>
+                    <div class="mt-auto">
+                        <a href="#answer" class="btn btn-success" data-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="answer">Responder</a>
+                    </div>
                 </div>
+            </div>
+            <div class="collapse" id="answer">
+                <div class="card border-top-custom">
+                    <div class="card-header">
+                        <label for="answer">
+                            <h5>Responda aqui:</h5>
+                        </label>
+                    </div>
+                    <div class="card-body pt-0 mt-2">
+                        <form action="/questions/answer" method="POST">
+                            <textarea name="body_content" cols="30" rows="5" class="form-control"></textarea>
+                            <input type="hidden" name="answerid" value="{{question.id}}">
+                            <button type="submit" class="btn btn-success mt-2">Registrar resposta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-bottom-0">
+                <div class="card-header">
+                    <label for="answer">
+                        <h5>Respostas:</h5>
+                    </label>
+                    {{#if answers}}
+                    {{else}}
+                    <p class="text-danger">Não tem respostas meu querido!</p>
+                    {{/if}}
+                </div>
+                {{#each answers}}
+                <div class="card-body pt-0 mt-4 pb-0 border-bottom border-bottom-width">
+                    <div class="border-left border-left-width border-primary">
+                        <p class="pl-2">{{body_content}}</p>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
     </div>

@@ -1,3 +1,17 @@
 .card-text-custom {
     height: 50px !important;
 }
+
+.border-top-custom {
+    border-top-width: medium;
+    border-top-color: darkorange;
+
+}
+
+.border-left-width {
+    border-left-width: medium !important;
+}
+
+.border-bottom-width {
+    border-bottom-width: medium !important;
+}

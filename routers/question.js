@@ -1,6 +1,7 @@
 const express = require('express')
 router = express.Router()
 const Question = require('../models/Question')
+const Answer = require('../models/Answer')
 
 router.get('/', (req, res) => {
     Question.findAll({
@@ -35,16 +36,42 @@ router.post('/makequestion/savequestion', (req, res) => {
 router.get('/:id', (req, res) => {
     let id = req.params.id
     Question.findOne({
-        where: {id: id},
+        where: {
+            id: id
+        },
         raw: true
     }).then(question => {
         if (!question) {
             res.redirect('/questions')
         } else {
-            console.log(question)
-            res.render('questions/questionview', {question: question})    
+            Answer.findAll({
+                where: {
+                    answerid: question.id
+                },
+                order: [
+                    ['id', 'DESC']
+                ],
+                raw: true
+            }).then(answers => {
+                res.render('questions/questionview', {
+                    question: question,
+                    answers: answers
+                })
+            })
         }
     })
+})
+
+router.post('/answer', (req, res) => {
+    let body_content = req.body.body_content
+    let answerid = req.body.answerid
+    console.log('SUCCESSFULLY')
+    Answer.create({
+        body_content: body_content,
+        answerid: answerid
+    }).then((
+        res.redirect('/questions/' + answerid)
+    ))
 })
 
 module.exports = router
